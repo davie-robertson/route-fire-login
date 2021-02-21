@@ -1,10 +1,16 @@
 // look-details.ts
 
-import { LitElement, html, customElement,property } from 'lit-element';
+import { LitElement, html, customElement, property } from 'lit-element';
 
 @customElement('look-details')
 export class LookDetails extends LitElement {
-  @property({type: String}) id=context.params.id
+  @property({ type: String }) id = '';
+
+  public onAfterEnter(location: any): void {
+    console.log('onAfterEnter');
+    console.log(location.params.id);
+    this.id = location.params.id as string;
+  }
 
   render() {
     return html`
