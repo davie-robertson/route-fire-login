@@ -6,6 +6,7 @@ export class Look extends LitElement {
   render() {
     return html`
       <slot></slot>
+      Hello!
     `;
   }
 }

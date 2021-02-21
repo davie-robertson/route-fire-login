@@ -1,18 +1,25 @@
 // look-details.ts
 
 import { LitElement, html, customElement, property } from 'lit-element';
+import {updateMetadata } from 'pwa-helpers/metadata.js'
 
 @customElement('look-details')
 export class LookDetails extends LitElement {
   @property({ type: String }) id = '';
 
   public onAfterEnter(location: any): void {
-    console.log('onAfterEnter');
-    console.log(location.params.id);
+
     this.id = location.params.id as string;
   }
 
   render() {
+    updateMetadata({
+      title: `Look ${this.id}`,
+      description: 'This is a look, a great look',
+      url: window.location.href
+      // image: '/assets/look-hero.png'
+    });
+
     return html`
       <h2>a look ${this.id}</h2>
       <p>

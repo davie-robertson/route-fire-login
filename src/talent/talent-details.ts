@@ -1,10 +1,29 @@
 // blog-post.ts
 
-import { LitElement, html, customElement } from 'lit-element';
+import { LitElement, html, customElement, property } from 'lit-element';
+import {updateMetadata } from 'pwa-helpers/metadata.js'
+
+
 
 @customElement('talent-details')
 export class TalentDetials extends LitElement {
+  @property({ type: String }) id = '';
+
+  public onAfterEnter(location: any): void {
+    this.id = location.params.id as string;
+  }
+
+
+
   render() {
+
+    updateMetadata({
+      title: `Talent ${this.id}`,
+      description: 'This is my sample app',
+      url: window.location.href
+      // image: '/assets/talent-hero.png'
+    });
+
     return html`
       <h2>Talent</h2>
       <p>

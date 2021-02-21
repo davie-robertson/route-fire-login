@@ -1,9 +1,15 @@
 // blog-post.ts
 
-import { LitElement, html, customElement } from 'lit-element';
+import { LitElement, html, customElement,property } from 'lit-element';
 
 @customElement('product-details')
 export class ProductDetials extends LitElement {
+  @property({ type: String }) id = '';
+
+  public onAfterEnter(location: any): void {
+    this.id = location.params.id as string;
+  }
+
   render() {
     return html`
       <h2>Blog Post Title</h2>
